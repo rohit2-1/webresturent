@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+ <style>
+ .close-btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 28px;
+  margin-right: 40px;
+  margin-top: 30px;
+  color: #fffcfc;
+  text-decoration: none;
+  background: #000000;
+  padding: 8px 16px;
+  border-radius: 60%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.3s;
+}
+
+.close-btn:hover {
+  transform: scale(1.3);
+  background-color: #e42e2e;
+}
+.gallery-section {
+  padding: 60px 20px;
+  background: url('scrappaper.jpg') no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+}
+
+.gallery-section h1 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-family: 'trirong', serif;
+  color: #333;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 45px;
+}
+
+.gallery-grid a img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-grid a img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+</style>
+</head>
+<body>
+     <a href="projectweb.html" class="close-btn" aria-label="Close & go home">
+    <i class="fas fa-times"></i>
+  </a>
+<section class="gallery-section">
+  <h1>Our Gallery</h1>
+  <div class="gallery-grid">
+    <a href="yakshalogo.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+      <img src="yakshalogo.jpg" alt="Food 1">
+    </a>
+       <a href="smoothee.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+      <img src="smoothee.jpg" alt="Food 1">
+    </a>
+
+        <a href="mutton-sekuwa.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+      <img src="mutton-sekuwa.jpg" alt="Food 1">
+    </a>
+        <a href="yakfam2.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+      <img src="yakfam2.jpg" alt="Food 1">
+    </a>
+        <a href="butter-chicken.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+      <img src="butter-chicken.jpg" alt="Food 1">
+    </a>
+        <a href="burger.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+      <img src="burger.jpg" alt="Food 1">
+    </a>
+    <a href="thakali.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+        <img src="thakali.jpg" alt="Food 1">
+    </a>
+    <a href="pizza.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+        <img src="pizza.jpg" alt="Food 1">
+    </a>
+    <a href="fried chicekn.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+        <img src="fried chicekn.jpg" alt="Food 1">
+    </a>
+    <a href="Momo_nepal.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+        <img src="Momo_nepal.jpg" alt="Food 1">
+    </a>
+    <a href="fam3.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+        <img src="fam3.jpg" alt="Food 1">
+    </a>
+    <a href="panner.jpeg" data-lightbox="restaurant" data-title="Signature Dish">
+        <img src="panner.jpeg" alt="Food 1">
+    </a>
+    <a href="keema nood.jpg" data-lightbox="restaurant" data-title="Signature Dish">
+  <img src="keema nood.jpg" alt="Food 1">
+</a>
+    
+  </div>
+</section>
+
+
+</body>
+</html>
