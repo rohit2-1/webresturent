@@ -99,27 +99,53 @@
   </style>
 </head>
 <body>
-    <a href="projectweb.html" class="close-btn" aria-label="Close & go home">
+
+  <a href="projectweb.html" class="close-btn" aria-label="Close & go home">
     <i class="fas fa-times"></i>
   </a>
 
   <div class="form-container">
     <h1>Book</h1>
-    <form>
-      
+    <form method="post" action="">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" />
+      <input type="text" id="name" name="Name" placeholder="Your name" required />
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Your phone number" />
+      <label for="phone">PhoneNumber</label>
+      <input type="tel" id="phone" name="PhoneNumber" placeholder="Your phone number" required />
 
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="Your email" />
+      <input type="email" id="email" name="Email" placeholder="Your email" required />
 
       <div class="button-group">
-        <button type="button" class="login-btn">Book</button>
+        <button type="submit" name="sb" class="login-btn">Book</button>
       </div>
     </form>
   </div>
+
+  <?php
+  // Connect to MySQL
+  $con = mysqli_connect("localhost", "root", "", "Book_Resturent");
+
+  if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  if (isset($_POST['sb'])) {
+    $Name = $_POST['Name'];
+    $PhoneNumber = $_POST['PhoneNumber'];
+    $Email = $_POST['Email'];
+
+    $query = "INSERT INTO book (Name, PhoneNumber, Email) VALUES ('$Name', '$PhoneNumber', '$Email')";
+    $execute = mysqli_query($con, $query);
+
+    if ($execute) {
+      echo "<p style='color: green;'>✅ Booking successful!</p>";
+    } else {
+      echo "<p style='color: red;'>❌ Error: " . mysqli_error($con) . "</p>";
+    }
+  }
+
+  mysqli_close($con);
+  ?>
 </body>
 </html>
