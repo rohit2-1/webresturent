@@ -1,3 +1,12 @@
+
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer-master/src/Exception.php';
+require 'phpmailer-master/src/PHPMailer.php';
+require 'phpmailer-master/src/SMTP.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +109,7 @@
 </head>
 <body>
 
-  <a href="projectweb.html" class="close-btn" aria-label="Close & go home">
+  <a href="http://127.0.0.1:5500/projectweb.html" class="close-btn" aria-label="Close & go home">
     <i class="fas fa-times"></i>
   </a>
 
@@ -139,11 +148,80 @@
     $execute = mysqli_query($con, $query);
 
     if ($execute) {
-      echo "<p style='color: green;'>✅ Booking successful!</p>";
+        // PHPMailer logic...
+        $mail = new PHPMailer(true);
+
+        try {
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'rocky200598@gmail.com';
+            $mail->Password   = 'kquu dqct vcjl lcsa'; // Add your Gmail App Password here
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            // Recipients
+            $mail->setFrom('rocky200598@gmail.com', 'Yaksha Restro And Bar');
+            $mail->addAddress($Email, $Name);
+
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Thanks for Your Booking!';
+            $mail->Body    = "
+                <h3>Hi $Name,</h3>
+                <p>Thank you for booking at our restaurant.</p>
+                <p>We will contact you shortly in the given number $PhoneNumber.stay tuned.</p>
+                <br>
+                <p>Regards,<br>Your Restaurant Team</p>
+            ";
+
+            $mail->send();
+
+            echo "
+            <style>
+              .popup-success {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                font-family: sans-serif;
+                font-size: 16px;
+                z-index: 9999;
+                animation: slideDown 0.5s ease-out;
+              }
+
+              @keyframes slideDown {
+                from {
+                  opacity: 0;
+                  transform: translate(-50%, -20px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translate(-50%, 0);
+                }
+              }
+            </style>
+
+            <div class='popup-success'>
+              ✅ <strong>Thank you!</strong> Booking was successful.
+            </div>
+            ";
+
+        } catch (Exception $e) {
+            echo "<p style='color: red;'>❌ Email could not be sent. Mailer Error: {$mail->ErrorInfo}</p>";
+        }
+
     } else {
-      echo "<p style='color: red;'>❌ Error: " . mysqli_error($con) . "</p>";
+        echo "<p style='color: red;'>❌ Error: " . mysqli_error($con) . "</p>";
     }
-  }
+}
 
   mysqli_close($con);
   ?>
